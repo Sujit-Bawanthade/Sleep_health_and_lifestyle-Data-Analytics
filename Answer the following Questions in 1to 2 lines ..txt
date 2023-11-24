@@ -1,0 +1,106 @@
+ Question 1: What is Pandas, and why is it commonly used in data cleaning tasks?
+        ans: Pandas is a popular open-source data manipulation and analysis library for Python. It provides easy-to-use data structures, such as DataFrame and Series, along with a wide variety of functions for manipulating and analyzing structured data.
+
+
+Question 2: Given a DataFrame with missing values, how would you check for missing
+values in each column and count the total number of missing values?
+    Ans:   use the isnull() method to check for missing values in a DataFrame  To count the total number of missing values in each column, you can then use the sum() method.
+  
+# Check for missing values in each column
+missing_values = df.isnull()
+
+# Count the total number of missing values in each column
+missing_values_count = missing_values.sum()
+
+# Display the result
+print("Missing values in each column:")
+print(missing_values_count)
+
+
+
+Question 3: How can you remove duplicates from a DataFrame while retaining the first
+occurrence of each unique row?
+Ans       :  In Pandas, you can use the drop_duplicates() method to remove duplicate rows from a DataFrame while retaining the first occurrence of each unique row:
+
+# Remove duplicates and retain the first occurrence of each unique row
+df_no_duplicates = df.drop_duplicates()
+
+# Display the resulting DataFrame
+print("DataFrame after removing duplicates:")
+print(df_no_duplicates)
+
+
+ Question 4: If you have a DataFrame with a column containing string values, how can
+you convert all the values in that column to lowercase?
+Ans        : To convert all the values in a specific column of a DataFrame to lowercase in Pandas, you can use the str.lower() method.
+
+# Convert all values in the 'ColumnName' column to lowercase
+df['ColumnName'] = df['ColumnName'].str.lower()
+
+# Display the resulting DataFrame
+print("DataFrame with lowercase values in the specified column:")
+print(df)
+
+Replace 'ColumnName' with the actual name of the column you want to convert to lowercase.
+This code snippet uses the str.lower() method, which is applied to the specified column (df['ColumnName']). It converts all the string values in that column to lowercase.
+
+
+Question 5: How do you replace missing values in a DataFrame with a specific value,
+like 0, for a particular column?
+Ans : To replace missing values in a specific column of a DataFrame with a specific value (such as 0), you can use the fillna() method. Here's an example:
+
+# Replace missing values in the 'ColumnName' column with 0
+df['ColumnName'] = df['ColumnName'].fillna(0)
+
+# Display the resulting DataFrame
+print("DataFrame after replacing missing values with 0 in the specified column:")
+print(df)
+Replace 'ColumnName' with the actual name of the column for which you want to replace missing values with 0.
+
+The fillna() method is used here to fill NaN (missing) values in the specified column with the specified value (in this case, 0).
+
+Question 6: If you have a DataFrame with a datetime column, how can you extract the
+year, month, and day into separate columns?
+Ans       : If you have a DataFrame with a datetime column in Pandas, you can extract the  year, month, and day into separate columns using the dt accessor. Here's an example:
+
+# Convert the datetime column to datetime type if it's not already
+df['DatetimeColumn'] = pd.to_datetime(df['DatetimeColumn'])
+
+# Extract year, month, and day into separate columns
+df['Year'] = df['DatetimeColumn'].dt.year
+df['Month'] = df['DatetimeColumn'].dt.month
+df['Day'] = df['DatetimeColumn'].dt.day
+
+# Display the resulting DataFrame
+print("DataFrame with year, month, and day extracted into separate columns:")
+print(df)
+
+Replace 'DatetimeColumn' with the actual name of your datetime column.
+In this example, pd.to_datetime() is used to ensure that the 'DatetimeColumn' is of datetime type. Then, the dt accessor is used to extract the year, month, and day into separate columns.
+
+
+ Question 7: How can you filter rows in a DataFrame where a specific column's values
+meet a certain condition (e.g., all rows where 'age' is greater than 30)?
+Ans        : You can also combine multiple conditions using logical operators such as & (AND) and | (OR). For example, to filter rows where 'age' is greater than 30 and 'gender' is 'Male', you can do:
+
+python
+filtered_df = df[(df['age'] > 30) & (df['gender'] == 'Male')]
+
+
+Question 8: What is the purpose of the .apply() function in Pandas, and how would you
+use it to create a new column based on values from existing columns?
+Ans:    lambda functions for a more concise syntax.
+df['NewColumn'] = df.apply(lambda row: row['Column1'] + row['Column2'], axis=1)
+The .apply() function provides flexibility in creating new columns based on complex conditions or computations involving values from one or more existing columns in the DataFrame.
+
+
+ Question 9: Suppose you want to merge two DataFrames, 'df1' and 'df2,' on a common
+column 'key.' How would you perform this merge operation in Pandas?
+Ans  :  To merge two DataFrames, 'df1' and 'df2,' on a common column 'key' in Pandas, you can use the merge() function.  function is used to merge 'df1' and 'df2' based on the common column 'key'. The resulting merged_df will contain columns from both DataFrames, and the rows will be matched based on the values in the 'key' column.  
+
+
+Question 10: You have a DataFrame with a column containing messy text data. How can
+you clean and standardize the text data (e.g., remove punctuation and convert to
+lowercase) in that column?
+Ans:        To clean and standardize text data in a DataFrame column, you can use the .str accessor along with various string manipulation functions provided by Pandas. Here's an example of how you can clean and standardize text data by removing punctuation and converting to lowercase
+
